@@ -52,15 +52,14 @@ search: true
 
 `item添加字段`
 
-<aside class="notice">
-<!-- You must replace <code>meowmeowmeow</code> with your personal API key. -->
-因为首页可以直接加入商品到进货单，所以需要有批次号字段
-</aside>
-
 ### HTTP Request
 
 `GET mall/items/hot?locationId=128&start=0&limit=20&merchantId=27602`
 
+<aside class="notice">
+<!-- You must replace <code>meowmeowmeow</code> with your personal API key. -->
+因为首页可以直接加入商品到进货单，所以需要有批次号字段
+</aside>
 ## 商品列表
 
 > 在该页面购买时会列出所有批次信息
@@ -177,11 +176,11 @@ search: true
 
 加入进货单时传入批次号字段
 
-<aside class="notice">请求参数的每个商品都添加批次号字段，如为非临期品则为空</aside>
-
 ### HTTP Request
 
 `POST /mall/cart/add/{merchantId}/{locationId}`
+
+<aside class="notice">请求参数的每个商品都添加批次号字段，如为非临期品则为空</aside>
 
 ### URL Parameters
 
@@ -234,8 +233,8 @@ search: true
 
 返回的进货单商品按照加入时传入的批次号返回，若加入多个批次号不合并
 
-<aside class="notice">
-按不同批次号展示所有购买的商品</aside>
 ### HTTP Request
 
 `GET /mall/cart/{merchantId}/{locationId}?start={start}&limit={limit}`
+
+<aside class="notice">按不同批次号展示所有购买的商品</aside>
