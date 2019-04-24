@@ -288,13 +288,13 @@
 <p>如果是非临期品，就为空，如果是临期品就返回批次号，返回时间最早的批次号</p>
 
 <p><code>item添加字段</code></p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET mall/items/hot?locationId=128&amp;start=0&amp;limit=20&amp;merchantId=27602</code></p>
 
 <aside class="notice">
 <!-- You must replace <code>meowmeowmeow</code> with your personal API key. -->
 因为首页可以直接加入商品到进货单，所以需要有批次号字段
 </aside>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET mall/items/hot?locationId=128&amp;start=0&amp;limit=20&amp;merchantId=27602</code></p>
 <h2 id='44544d2145-2'>商品列表</h2>
 <blockquote>
 <p>在该页面购买时会列出所有批次信息</p>
@@ -401,10 +401,10 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>加入进货单时传入批次号字段</p>
-
-<aside class="notice">请求参数的每个商品都添加批次号字段，如为非临期品则为空</aside>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST /mall/cart/add/{merchantId}/{locationId}</code></p>
+
+<aside class="notice">请求参数的每个商品都添加批次号字段，如为非临期品则为空</aside>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -459,11 +459,10 @@
 <span class="p">}</span>
 </code></pre>
 <p>返回的进货单商品按照加入时传入的批次号返回，若加入多个批次号不合并</p>
-
-<aside class="notice">
-按不同批次号展示所有购买的商品</aside>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET /mall/cart/{merchantId}/{locationId}?start={start}&amp;limit={limit}</code></p>
+
+<aside class="notice">按不同批次号展示所有购买的商品</aside>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
