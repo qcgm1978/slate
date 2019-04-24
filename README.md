@@ -10,7 +10,9 @@
 
 <p align="center"><em>The example above was created with Slate. Check it out at <a href="https://lord.github.io/slate">lord.github.io/slate</a>.</em></p>
 
-Deploy: `./deploy.sh` on root path and access https://github.com/lord/slate
+## Deploy:
+
+- `./deploy.sh` on root path and access https://github.com/lord/slate
 
 ## Features
 
