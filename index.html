@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,9 +211,6 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
               <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
@@ -222,22 +219,27 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#c40cd25137" class="toc-h1 toc-link" data-title="批次号前端接口需求">批次号前端接口需求</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#44544d2145" class="toc-h1 toc-link" data-title="商品列表">商品列表</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#b69a84ebe5" class="toc-h2 toc-link" data-title="热销商品">热销商品</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#44544d2145-2" class="toc-h2 toc-link" data-title="商品列表">商品列表</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#89a5c1e493" class="toc-h1 toc-link" data-title="进货单相关">进货单相关</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#9cb3b30a4b" class="toc-h2 toc-link" data-title="加入进货单">加入进货单</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#6758a44e66" class="toc-h2 toc-link" data-title="进货单列表">进货单列表</a>
                   </li>
               </ul>
           </li>
@@ -253,191 +255,221 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <h1 id='c40cd25137'>批次号前端接口需求</h1>
+<p>前端整理的开发接口需求，item 指的是数组里的每一项，最好返回批次号及生产日期，详见http://192.168.2.23/member-service/board/issues/1059</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
+<p>(This API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.)</p>
+<h1 id='44544d2145'>商品列表</h1><h2 id='b69a84ebe5'>热销商品</h2>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>Interface should return JSON structured like this:</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="s2">"result"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="o">**</span><span class="s2">"添加字段"</span><span class="p">:</span><span class="s2">"批次号字段"</span><span class="p">,</span><span class="o">**</span>
+          <span class="na">itemId</span><span class="p">:</span> <span class="s2">"3467"</span><span class="p">,</span>
+          <span class="na">itemName</span><span class="p">:</span> <span class="s2">"冰露纯悦包装饮用水（纸箱）"</span><span class="p">,</span>
+          <span class="na">itemImageAddress1</span><span class="p">:</span>
+            <span class="s2">"http://pro-img-jihuiduo.oss-cn-beijing.aliyuncs.com/sku_image/3467.jpg"</span><span class="p">,</span>
+          <span class="na">price</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+          <span class="na">itemCategoryCode</span><span class="p">:</span> <span class="s2">"1204001"</span><span class="p">,</span>
+          <span class="na">itemSpecification</span><span class="p">:</span> <span class="s2">"550ml*24"</span><span class="p">,</span>
+          <span class="na">promotionTypes</span><span class="p">:</span> <span class="p">[</span><span class="s2">"2"</span><span class="p">],</span>
+          <span class="na">saleUnit</span><span class="p">:</span> <span class="s2">"箱(24个)"</span><span class="p">,</span>
+          <span class="c1">// "putShelvesFlg": '@boolean',</span>
+          <span class="nx">putShelvesFlg</span><span class="p">,</span>
+          <span class="na">inventoryCount</span><span class="p">:</span> <span class="s2">"@pick([0, 1])"</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>item 添加字段</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>如果是非临期品，就为空，如果是临期品就返回批次号，返回时间最早的批次号</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
+<p><code>item添加字段</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+<!-- You must replace <code>meowmeowmeow</code> with your personal API key. -->
+因为首页可以直接加入商品到进货单，所以需要有批次号字段
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
+<p><code>GET mall/items/hot?locationId=128&amp;start=0&amp;limit=20&amp;merchantId=27602</code></p>
+<h2 id='44544d2145-2'>商品列表</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>在该页面购买时会列出所有批次信息</p>
+
+<p>Interface should return JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="err">**</span><span class="s2">"添加字段"</span><span class="p">:</span><span class="w"> </span><span class="s2">"批次号字段"</span><span class="p">,</span><span class="err">**</span><span class="w">
+      </span><span class="s2">"putShelvesFlg"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"inventoryCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90575"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"seriesCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68235"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3467"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"冰露纯悦包装饮用水（纸箱）"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemSpecification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550ml*24"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemBrand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"可口可乐"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"saleUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"箱(24个)"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stockUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"个"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"saleSku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6928804010015"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stockSku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6928804010015"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemImageAddress1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://pro-img-jihuiduo.oss-cn-beijing.aliyuncs.com/sku_image/3467.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemImageAddress2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemImageAddress3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemImageAddress4"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemImageAddress5"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applayScope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"salesDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemLocationCollection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12,130,140,145,146,18,20,40,44,46,49,54,55,56,57,72,73,75,76,79,86,87,119,122,127,128,129,131,132,133,134,135,136,137,138,139,143,144"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemCategoryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1204001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemOrigin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemExpirationDays"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"putShelvesDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018/10/29 14:31:05"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">118.2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemCategoryName"</span><span class="p">:</span><span class="w"> </span><span class="s2">" 可口可乐"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"priceLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"promotionTypes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"saleUnitExchange"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"purchaseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemPackage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"瓶"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"length"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isConsignedGood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>商品详情页面购买时会列出所有批次信息</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code>GET mall/items?locationId=140&amp;categoryCd=&amp;itemIds=3467&amp;merchantId=30263</code></p>
+
+<aside class="notice">
+需要返回该商品所有批次信息，包括批次号和生产日期
+</aside>
+<h1 id='89a5c1e493'>进货单相关</h1><h2 id='9cb3b30a4b'>加入进货单</h2>
+<blockquote>
+<p>请求参数的每个商品都添加批次号字段，如为非临期品则为空. Requests with JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"locationId"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"merchantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27602"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"promotions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="s2">"promotionId"</span><span class="p">:</span><span class="w"> </span><span class="mi">11665</span><span class="w"> </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"addItemList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="err">**</span><span class="s2">"添加字段"</span><span class="p">:</span><span class="w"> </span><span class="s2">"批次号字段"</span><span class="p">,</span><span class="err">**</span><span class="w">
+      </span><span class="s2">"putShelvesFlg"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"inventoryCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"seriesCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0253"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wgfurvsdeo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"再报是转照八克他"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemSpecification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"420ml*12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemBrand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"可口可乐"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"saleUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"盒(7个)"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stockUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"个"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"saleSku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6956416205147"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stockSku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6956416205147"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemImageAddress1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://dummyimage.com/468x60"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemImageAddress2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemImageAddress3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemImageAddress4"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemImageAddress5"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applayScope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"salesDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemLocationCollection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12,130,145,146,140,44,18,20,40,46,49,128,54,55,56,57,72,73,75,76,129,79,131,132,133,134,135,136,86,87,119,122,137,138,127,139,143,144"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemCategoryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1205014"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemOrigin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itemExpirationDays"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"putShelvesDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018/11/01 14:08:22"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-18T01:51:22.270+0000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"categoryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1205014"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"updateAddTime"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>加入进货单时传入批次号字段</p>
+
+<aside class="notice">请求参数的每个商品都添加批次号字段，如为非临期品则为空</aside>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST /mall/cart/add/{merchantId}/{locationId}</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Description</th>
+<th>Type</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>addItemList</td>
+<td>array</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
+<h2 id='6758a44e66'>进货单列表</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>按不同批次号展示所有购买的商品. The interface should return JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="p">[</span><span class="s2">`items|</span><span class="p">${</span><span class="nx">len</span><span class="p">}</span><span class="s2">`</span><span class="p">]:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="o">**</span><span class="s2">"添加字段"</span><span class="p">:</span> <span class="s2">"批次号字段"</span><span class="p">,</span><span class="o">**</span>
+            <span class="s2">"putShelvesFlg"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">"putShelvesFlg"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nx">inventoryCount</span><span class="p">,</span>
+            <span class="na">seriesCode</span><span class="p">:</span> <span class="s1">'@string("number",4)'</span><span class="p">,</span>
+            <span class="na">itemBrandId</span><span class="p">:</span> <span class="s1">'@string("lower",10)'</span><span class="p">,</span>
+            <span class="na">itemId</span><span class="p">:</span> <span class="s1">'@increment(1000)'</span><span class="p">,</span>
+            <span class="s2">"itemName"</span><span class="p">:</span> <span class="s2">"@ctitle(5,10)"</span><span class="p">,</span>
+            <span class="s2">"itemSpecification"</span><span class="p">:</span> <span class="s2">"420ml*12"</span><span class="p">,</span>
+            <span class="s2">"itemBrand"</span><span class="p">:</span> <span class="s2">"可口可乐"</span><span class="p">,</span>
+            <span class="s2">"saleUnit"</span><span class="p">:</span> <span class="s2">"@pick(['箱','盒'])(@integer(5,10)个)"</span><span class="p">,</span>
+            <span class="s2">"stockUnit"</span><span class="p">:</span> <span class="s2">"个"</span><span class="p">,</span>
+            <span class="s2">"saleSku"</span><span class="p">:</span> <span class="s2">"6956416205147"</span><span class="p">,</span>
+            <span class="s2">"stockSku"</span><span class="p">:</span> <span class="s2">"6956416205147"</span><span class="p">,</span>
+            <span class="s2">"itemImageAddress1"</span><span class="p">:</span> <span class="s2">"@image"</span><span class="p">,</span>
+            <span class="c1">// "itemImageAddress1": 'https://stg-statics.jihuiduo.cn/jhb_images/%E6%83%A0%E7%99%BE%E7%9C%9F%E6%B4%97%E8%A1%A3%E6%B6%B21.jpg',</span>
+            <span class="s2">"itemImageAddress2"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+            <span class="s2">"itemImageAddress3"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+            <span class="s2">"itemImageAddress4"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+            <span class="s2">"itemImageAddress5"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+            <span class="s2">"applayScope"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+            <span class="s2">"salesDescription"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+            <span class="s2">"itemLocationCollection"</span><span class="p">:</span> <span class="s2">"12,130,145,146,140,44,18,20,40,46,49,128,54,55,56,57,72,73,75,76,129,79,131,132,133,134,135,136,86,87,119,122,137,138,127,139,143,144"</span><span class="p">,</span>
+            <span class="s2">"itemCategoryCode"</span><span class="p">:</span> <span class="s2">"1205014"</span><span class="p">,</span>
+            <span class="s2">"itemOrigin"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+            <span class="s2">"itemExpirationDays"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+            <span class="s2">"putShelvesDate"</span><span class="p">:</span> <span class="s2">"2018/11/01 14:08:22"</span><span class="p">,</span>
+            <span class="s2">"price"</span><span class="p">:</span> <span class="s1">'@integer(10,100)'</span><span class="p">,</span>
+            <span class="s2">"quantity"</span><span class="p">:</span> <span class="s1">'@integer(1,3)'</span><span class="p">,</span>
+            <span class="s2">"addTime"</span><span class="p">:</span> <span class="s2">"2018-12-18T01:51:22.270+0000"</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+<p>返回的进货单商品按照加入时传入的批次号返回，若加入多个批次号不合并</p>
+
+<aside class="notice">
+按不同批次号展示所有购买的商品</aside>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET /mall/cart/{merchantId}/{locationId}?start={start}&amp;limit={limit}</code></p>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>以下状态码谨供参考。 The Kittn API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -494,9 +526,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
                 <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
