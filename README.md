@@ -12,7 +12,7 @@
 
 ## Deploy:
 
-- `./deploy.sh` on root path and access https://qcgm1978.github.io/slate
+- `npm run deploy`
 
 ## Features
 
