@@ -12,7 +12,7 @@
 
 ## Deploy:
 
-- `./deploy.sh` on root path and access https://github.com/lord/slate
+- `./deploy.sh` on root path and access https://qcgm1978.github.io/slate
 
 ## Features
 
