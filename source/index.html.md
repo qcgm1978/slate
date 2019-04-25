@@ -78,37 +78,7 @@ search: true
       "itemBrandId": "90575",
       "seriesCode": "68235",
       "itemId": "3467",
-      "itemName": "冰露纯悦包装饮用水（纸箱）",
-      "itemSpecification": "550ml*24",
-      "itemBrand": "可口可乐",
-      "saleUnit": "箱(24个)",
-      "stockUnit": "个",
-      "saleSku": "6928804010015",
-      "stockSku": "6928804010015",
-      "itemImageAddress1": "http://pro-img-jihuiduo.oss-cn-beijing.aliyuncs.com/sku_image/3467.jpg",
-      "itemImageAddress2": "",
-      "itemImageAddress3": "",
-      "itemImageAddress4": "",
-      "itemImageAddress5": "",
-      "applayScope": "2",
-      "salesDescription": "",
-      "itemLocationCollection": "12,130,140,145,146,18,20,40,44,46,49,54,55,56,57,72,73,75,76,79,86,87,119,122,127,128,129,131,132,133,134,135,136,137,138,139,143,144",
-      "itemCategoryCode": "1204001",
-      "itemOrigin": "",
-      "itemExpirationDays": "",
-      "putShelvesDate": "2018/10/29 14:31:05",
-      "price": 118.2,
-      "itemCategoryName": " 可口可乐",
-      "priceLevel": "47",
-      "promotionTypes": null,
-      "saleUnitExchange": 24,
-      "purchaseType": "",
-      "itemPackage": "瓶",
-      "length": "",
-      "width": "",
-      "height": "",
-      "weight": "",
-      "isConsignedGood": "N"
+      "itemName": "冰露纯悦包装饮用水（纸箱）"
     }
   ]
 }
@@ -152,22 +122,7 @@ search: true
       "stockUnit": "个",
       "saleSku": "6956416205147",
       "stockSku": "6956416205147",
-      "itemImageAddress1": "http://dummyimage.com/468x60",
-      "itemImageAddress2": "",
-      "itemImageAddress3": "",
-      "itemImageAddress4": "",
-      "itemImageAddress5": "",
-      "applayScope": "2",
-      "salesDescription": "",
-      "itemLocationCollection": "12,130,145,146,140,44,18,20,40,46,49,128,54,55,56,57,72,73,75,76,129,79,131,132,133,134,135,136,86,87,119,122,137,138,127,139,143,144",
-      "itemCategoryCode": "1205014",
-      "itemOrigin": "",
-      "itemExpirationDays": "",
-      "putShelvesDate": "2018/11/01 14:08:22",
-      "price": "58.00",
-      "quantity": 1,
-      "addTime": "2018-12-18T01:51:22.270+0000",
-      "categoryCode": "1205014"
+      "itemImageAddress1": "http://dummyimage.com/468x60"
     }
   ],
   "updateAddTime": false
@@ -205,27 +160,7 @@ search: true
             itemId: '@increment(1000)',
             "itemName": "@ctitle(5,10)",
             "itemSpecification": "420ml*12",
-            "itemBrand": "可口可乐",
-            "saleUnit": "@pick(['箱','盒'])(@integer(5,10)个)",
-            "stockUnit": "个",
-            "saleSku": "6956416205147",
-            "stockSku": "6956416205147",
-            "itemImageAddress1": "@image",
-            // "itemImageAddress1": 'https://stg-statics.jihuiduo.cn/jhb_images/%E6%83%A0%E7%99%BE%E7%9C%9F%E6%B4%97%E8%A1%A3%E6%B6%B21.jpg',
-            "itemImageAddress2": "",
-            "itemImageAddress3": "",
-            "itemImageAddress4": "",
-            "itemImageAddress5": "",
-            "applayScope": "2",
-            "salesDescription": "",
-            "itemLocationCollection": "12,130,145,146,140,44,18,20,40,46,49,128,54,55,56,57,72,73,75,76,129,79,131,132,133,134,135,136,86,87,119,122,137,138,127,139,143,144",
-            "itemCategoryCode": "1205014",
-            "itemOrigin": "",
-            "itemExpirationDays": "",
-            "putShelvesDate": "2018/11/01 14:08:22",
-            "price": '@integer(10,100)',
-            "quantity": '@integer(1,3)',
-            "addTime": "2018-12-18T01:51:22.270+0000"
+            "itemBrand": "可口可乐"
           }
         ]
 }
@@ -238,3 +173,92 @@ search: true
 `GET /mall/cart/{merchantId}/{locationId}?start={start}&limit={limit}`
 
 <aside class="notice">按不同批次号展示所有购买的商品</aside>
+
+# 订单相关
+
+## 订单列表
+
+> 在该页面再次购买时须传递批次信息
+
+> Interface should return JSON structured like this:
+
+```javascript
+{
+  "message": "OK",
+  "status": 200,
+  "result": [
+    {
+      orderItems: [
+        {
+                promotionId: null,
+                discountAmount: 0,
+                "items|10": [
+                  {
+                    **"添加字段": "批次号字段",**
+                    itemId: "3351",
+                    itemSku: null,
+                    itemName: "一级大豆油",
+                    quantity: 1
+                  }
+                ]
+        }
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`POST mall/order/list`
+
+<aside class="notice">
+订单列表接口需要返回各订单所含商品相应批次信息，包括批次号和生产日期
+</aside>
+
+## 订单详情
+
+> 在该页面再次购买时须传递批次信息
+
+> Interface should return JSON structured like this:
+
+```json
+{
+  "message": "OK",
+  "status": 200,
+  "result": {
+    "orderItems": [
+      {
+        "groupId": "dd2d1c9edd8511e8b0684f66c7dc16ed",
+        "promotionId": null,
+        "discountAmount": 0,
+        "items": [
+          {
+            **"添加字段": "批次号字段",**
+            "itemId": "5911",
+            "itemSku": null,
+            "itemName": "规内二书没离导却标认定照图层极",
+            "quantity": 4,
+            "unitPrice": 144,
+            "saleUnit": "个",
+            "locationId": "140",
+            "itemIcon": "https://pro-img-jihuiduo.oss-cn-beijing.aliyuncs.com/sku_image/5911.png",
+            "itemSpecification": "750g*12*16",
+            "returnQuantit": 4,
+            "categoryId": "2301001",
+            "promotionId": null,
+            "gift": false
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+### HTTP Request
+
+`GET mall/order/81763/181029143259643356`
+
+<aside class="notice">
+订单详情接口需要返回所含商品相应批次信息，包括批次号和生产日期
+</aside>
