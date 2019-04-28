@@ -7,6 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
+    "start": "bundle exec middleman server && open http://localhost:4567",
     "deploy": "./deploy.sh && open https://qcgm1978.github.io/slate/#b69a84ebe5",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
